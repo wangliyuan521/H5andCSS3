@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>任务2</title>
+		<style type="text/css">
+			legend{color: red;}
+		</style>
+	</head>
+	<body>
+			<h3>请填写个人信息</h3>
+			<fieldset>
+				<legend>基本信息</legend>
+				姓名<input name="name" placeholder="请输入姓名" required="required" /><br />
+				年龄<input name="age" value="20" />
+			</fieldset>
+			<fieldset>
+				<legend>你想在哪里收到邮件？</legend>
+				邮箱<input type="search" list="ways" name="email" autocomplete="on" list="ways" placeholder="请输入邮箱" required />
+				<datalist id="ways">
+					<option>@qq.com</option>
+					<option>@165.com</option>
+					<option>@gmall.com</option>
+					<option>@yahoo.com.cn</option>
+					<option>@126.com</option>
+				</datalist>
+			</fieldset>
+			<fieldset>
+				<legend>收入情况</legend>
+				月收入
+				<select id="money">
+					<option>10k+</option>
+					<option>20k+</option>
+					<option>30k+</option>
+					<option>40k+</option>
+					<option>50k+</option>
+				</select><br />
+				银行卡<input type="text" name="card" />
+				有效期<input type="date" name=date/>
+			</fieldset>
+			<fieldset>
+				<legend>选取提交文件</legend>
+				文件<input type="file" name="file" value="选择文件" />
+			</fieldset>
+			<input type="submit" value="提交" />
+	</body>
+	<script>
+		let a=/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*/;
+		email.oninput=function(){
+			let textBox=this.value;
+		}
+		if(a.test(textBox)){
+			var option=getElementsByTagName("option")
+			option.innerHTML=a+option.innerHTML;
+		}
+	</script>
+</html>
