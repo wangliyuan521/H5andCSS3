@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>音乐播放器</title>
+	    <link rel="icon" href="../img/snowflake.png" />
+	</head>
+	<body>
+		<table border="1px" cellspacing="0px" >
+			<tr>
+			<th bgcolor="steelblue">&nbsp;&nbsp;&nbsp;&nbsp;在线音乐 &nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th bgcolor="gray"> &nbsp;&nbsp;&nbsp;&nbsp;本地音乐&nbsp;&nbsp;&nbsp;&nbsp; </th>
+			</tr>
+		</table>
+		<ul>
+			<li>千千阙歌
+				<input type='button' value="播放" id="playaudio"  onclick = "play1()" />
+				<input type="button" value="暂停" id="pauseaudio" disabled="disabled"  onclick = "pause()" />
+			</li>
+			<li>思念人之星
+				<input type='button' value="播放" id="playaudio"  onclick = "play2()" />
+				<input type="button" value="暂停" id="pauseaudio" disabled="disabled"  onclick = "pause()" />
+			</li>
+		</ul>
+		<audio id="audios"controls="controls">
+			<source src="01.ogg" type="audio/ogg" />  
+       		<source src="01.wav" type="audio/wav" /> 
+		您的浏览器不支持Audio标签
+		</audio>
+	<script>
+	function play1(audio){
+		var playbutton = document.getElementById('playaudio');
+		var pausebutton = document.getElementById('pauseaudio');
+		var audio = document.getElementById('audios');
+		audio.src="01.mp3";
+		audio.play();
+		playbutton.disabled = true;	
+		pausebutton.disabled = false;
+	}
+	function play2(audio){
+		var playbutton = document.getElementById('playaudio');
+		var pausebutton = document.getElementById('pauseaudio');
+		var audio = document.getElementById('audios');
+		audio.src="02.mp3";
+		audio.play();
+		playbutton.disabled = true;	
+		pausebutton.disabled = false;
+	}
+	function pause(audio){
+		var audio = document.getElementById('audios');
+		var playbutton = document.getElementById('playaudio');
+		var pausebutton = document.getElementById('pauseaudio');
+		pausebutton.disabled = true;
+		playbutton.disabled = false;
+		audio.pause();
+	}
+	</script>
+	</body>
+</html>
