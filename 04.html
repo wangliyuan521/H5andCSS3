@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			border:2px solid gray;
+			width:180px;
+			height:180px;
+		}
+	</style>
+	<script type="text/javascript">
+        window.onload=function() {
+            var oDiv = document.getElementsById("div"); 
+            oDiv.ondrop = function(e) {
+                e.preventDefault();
+                var oImg = "<img style='width:100px;' src='' />";
+                oImg.src=this.src;
+                oDiv.innerHTML=oImg;        
+            }
+        }
+	</script>
+</head>
+<body>
+	<p>上传头像</p>
+	<div id="div"></div>
+</body>
+	
+</html>
