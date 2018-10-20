@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type=css/""></style>
+		<style type="text/css">
+			canvas{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400">
+			 您的浏览器不支持 canvas 元素，请更换或更新浏览器 
+		</canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext('2d');
+			draw();
+			function draw() {	
+				ctx.save();
+				ctx.clearRect(0,0,400,400);
+				ctx.translate(200, 200);
+				
+				ctx.beginPath();
+				ctx.arc(0, 0, 170, 0, 2 * Math.PI);
+				ctx.lineWidth = 6;
+				ctx.strokeStyle = "greenyellow";
+				ctx.stroke();
+				ctx.closePath();
+				
+				ctx.beginPath();
+				ctx.fillStyle = "black";
+				for(var i = 0; i < 60; i++) {
+					ctx.fillRect(0, 140, 3, 10);
+					ctx.rotate(6 / 180 * Math.PI);
+				}
+				
+				ctx.beginPath();
+				ctx.fillStyle = "red";
+				for(var i = 0; i < 12; i++) {
+					ctx.fillRect(0, 130, 6, 20);
+					ctx.rotate(30 / 180 * Math.PI);
+				}
+				
+				ctx.beginPath();
+				ctx.fillStyle = "black";
+				for(var i = 1; i < 13; i++) {
+					ctx.save(); //保存坐标轴位置
+					ctx.fillStyle = "gray";
+					ctx.translate(Math.sin(i * 30 / 180 * Math.PI) * 120, -Math.cos(i * 30 / 180 * Math.PI) * 120);
+					ctx.fillText(i, 0, 5);
+					ctx.restore(); //恢复坐标轴位置
+				}
+				
+				var time = new Date();
+				var h = time.getHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				
+				ctx.save();
+				ctx.strokeStyle = "purple";
+				ctx.lineWidth = 6;
+				ctx.beginPath();
+				ctx.rotate((Math.PI / 6) * h +(Math.PI / 360) * m +(Math.PI / 2160) * s);
+				ctx.moveTo(0, 8);
+				ctx.lineTo(0, -60);
+				ctx.fill();
+				ctx.stroke();
+				ctx.restore();
+				
+				ctx.save();
+				ctx.strokeStyle = "pink";
+				ctx.lineWidth = 4;
+				ctx.beginPath();
+				ctx.rotate((Math.PI / 30) * m +(Math.PI / 1800) * s);
+				ctx.moveTo(0, 8);
+				ctx.lineTo(0, -80);
+				ctx.fill();
+				ctx.stroke();
+				ctx.restore();
+				
+				ctx.save();
+				ctx.strokeStyle = "red";
+				ctx.lineWidth = 3;
+				ctx.beginPath();
+				ctx.rotate((Math.PI / 30) * s);
+				ctx.moveTo(0, 8);
+				ctx.lineTo(0, -100);
+				ctx.fill();
+				ctx.stroke();
+				ctx.closePath();
+				ctx.restore();
+				
+				ctx.beginPath();
+				ctx.rotate((Math.PI / 30) * s);
+				ctx.arc(0, -70, 4, 0, Math.PI * 2, true);
+        		ctx.lineWidth = 2;
+        		ctx.fillStyle = "black";
+        		ctx.strokeStyle = "red";				
+        		ctx.fill();
+        		ctx.stroke();
+				
+				ctx.beginPath();
+				ctx.arc(0, 0, 4, 0, Math.PI * 2, true);
+        		ctx.lineWidth = 2;
+        		ctx.fillStyle = "black";
+        		ctx.strokeStyle = "red";				
+        		ctx.fill();
+        		ctx.stroke();
+				ctx.restore();
+			}
+			setInterval("draw()",1000);
+		</script>
+	</body>
+</html>
